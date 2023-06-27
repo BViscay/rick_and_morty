@@ -1,0 +1,18 @@
+header {
+  margin-bottom: 15px;
+  /* background-color: rgba(58, 80, 61, 0.45); */
+}
+.navBar {
+  max-width: 1300px;
+  margin-inline: auto;
+  height: 75px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: end;
+}
+.buttonsContainer {
+  display: flex;
+}
+.buttonsContainer a {
+  text-decoration: none;
+}
