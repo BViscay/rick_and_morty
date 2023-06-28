@@ -21,7 +21,7 @@ const Popup = () => {
           <div className={styles.popupOverlay}>
             <div className={styles.popupContent}>
               <img src={popupImage} alt="Imagen" />
-              <Link to="/home">
+              <Link to="/login">
                 <button className={styles.button} onClick={closePopup}>
                   Entrar
                 </button>
