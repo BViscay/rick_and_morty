@@ -4,9 +4,6 @@ const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,10}$/;
 
 export const validation = (userData) => {
   const errors = {};
-  if (!userData.name) {
-    errors.name = "Se requiere un nombre";
-  }
   if (!regexEmail.test(userData.email)) {
     errors.email = "Debe ser un correo electrónico";
   }

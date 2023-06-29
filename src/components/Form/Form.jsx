@@ -8,17 +8,14 @@ import FormIMG from "../../img/imgform.png";
 const openEye = <FontAwesomeIcon icon={faEye} />;
 const closedEye = <FontAwesomeIcon icon={faEyeSlash} />;
 
-const Signup = (props) => {
-  const [userData, setUserData] = useState({
-    email: "",
-    password: "",
-  });
-
+const Signup = ({ login, isLogin }) => {
+  const [userData, setUserData] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-  const [wrongPassword, setWrongPassword] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
 
   const handleChange = (event) => {
+    event.preventDefault();
     const property = event.target.name;
     const value = event.target.value;
     setUserData({ ...userData, [property]: value });
@@ -31,14 +28,11 @@ const Signup = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.login(userData);
     const errors = validation(userData);
 
-    if (Object.keys(errors).length > 0) {
-      setWrongPassword(true);
-    } else {
-      setWrongPassword(false);
-      props.login(userData);
+    if (!Object.keys(errors).length > 0) {
+      login(userData);
+      setIsLogged(true);
     }
   };
 
@@ -87,7 +81,7 @@ const Signup = (props) => {
             Submit
           </button>
         </form>
-        {wrongPassword && (
+        {!isLogin && isLogged && (
           <div className={styles.invalidPasswordPopUp}>
             <p>La contraseña es inválida, intenta nuevamente.</p>
           </div>

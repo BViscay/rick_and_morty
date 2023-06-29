@@ -9,23 +9,17 @@ import Detail from "./components/Detail/Detail";
 import Error from "./Views/Error/Error";
 import About from "./components/About/About";
 import Form from "./components/Form/Form";
+import useLogin from "./hooks/useLogin";
+
 function App() {
   const [characters, setCharacters] = useState([]);
+  const { isLogin, login } = useLogin();
   const navigate = useNavigate();
-  const [access, setAccess] = useState(false);
-  const EMAIL = "brunoviscay@gmail.com";
-  const PASSWORD = "AAbb1234";
-
-  const login = (userData) => {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      navigate("/home");
-    }
-  };
 
   useEffect(() => {
-    !access && navigate("/");
-  }, [access]);
+    navigate(isLogin ? "/home" : "/login");
+    // eslint-disable-next-line
+  }, [isLogin]);
 
   const onClose = (idParam) => {
     const filteredCharacters = characters.filter(
@@ -48,19 +42,23 @@ function App() {
       }
     );
   };
+
   return (
     <div className="App">
       <Nav onSearch={onSearch} />
       <Routes>
         <Route path="/" element={<Bienvenida />} />
-        <Route path="/login" element={<Form login={login} />} />
+        <Route
+          path="/login"
+          element={<Form login={login} isLogin={isLogin} />}
+        />
         <Route
           path="/home"
           element={<Cards characters={characters} onClose={onClose} />}
         />
         <Route path="/detail/:id" element={<Detail onClose={onClose} />} />
         <Route path="/about" element={<About />} />
-        <Route path="*" element={<Error />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
     </div>
   );
