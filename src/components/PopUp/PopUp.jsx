@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import popupImage from "../../img/PopUp.png";
+import popupImage from "../../img/PopUp.gif";
 import styles from "./PopUp.module.css";
 import { Link } from "react-router-dom";
 

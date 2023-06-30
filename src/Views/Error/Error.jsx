@@ -2,7 +2,7 @@ import styles from "./Error.module.css";
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import bg404 from "../../img/BG404.png";
-import portal from "../../img/Portal.png";
+import portal from "../../img/Portal.gif";
 
 const NotFound = () => {
   const location = useLocation();
@@ -17,7 +17,6 @@ const NotFound = () => {
 
   return (
     <div className={styles.container}>
-      {/* <h1 className={styles.title}>ERROR</h1> */}
       <div className={styles.errorContainer}>
         <h2 className={styles.errorNumber}>4</h2>
         <img className={styles.portalImg} src={portal} alt="Portal" />

@@ -21,8 +21,9 @@
   z-index: -1;
 }
 .popupContent {
-  background-color: rgba(0, 255, 0, 0.616);
+  background: linear-gradient(rgba(0, 255, 0, 0.452), black);
   position: fixed;
+  border: solid 2.5px greenyellow;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

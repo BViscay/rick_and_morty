@@ -18,10 +18,10 @@
 }
 
 .portalImg {
-  height: 300px;
+  height: 400px;
   width: auto;
   z-index: 500;
-  margin-top: 30px;
+  margin-top: 0;
   margin-left: 15%;
 }
 
@@ -31,12 +31,13 @@
   font-weight: 900;
   font-size: 20.4em;
   display: block;
-  margin-right: -30%;
-  margin-left: -18%;
+  margin-right: -32%;
+  margin-left: -19%;
+  top: -10%;
 }
 
 .paragraph {
-  margin-top: 20px;
+  margin-top: 10%;
   margin-left: 20%;
   font-family: "Chakra Petch", sans-serif;
   font-size: 35px;
