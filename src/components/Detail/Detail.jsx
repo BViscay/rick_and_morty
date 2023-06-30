@@ -40,7 +40,7 @@ export default function Detail(props) {
             </div>
             <div>
               <Link to="/home">
-                <button className={styles.button} onClick={props.OnClose}>
+                <button className={styles.button} onClick={props.onClose}>
                   Back
                 </button>
               </Link>
