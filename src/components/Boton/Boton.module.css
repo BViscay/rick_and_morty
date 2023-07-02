@@ -1,11 +1,11 @@
 .Btn {
   position: relative;
-  width: 110px;
+  width: 55px;
   height: 55px;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: rgb(43, 255, 0);
   font-family: "Chakra Petch", sans-serif;
-  font-size: larger;
+  font-size: 30px;
   color: #0b4100;
   font-weight: bolder;
   text-decoration: rgb(43, 255, 0);

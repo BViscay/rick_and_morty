@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./SearchBar.module.css";
+import { AiOutlineUsergroupAdd } from "react-icons/ai";
 
 export default function SearchBar(props) {
   const [id, setId] = useState("");
@@ -23,7 +24,7 @@ export default function SearchBar(props) {
           className={styles.searchInput}
         />
         <button onClick={handleSearch} className={styles.searchButton}>
-          +
+          <AiOutlineUsergroupAdd />
         </button>
       </form>
     </div>

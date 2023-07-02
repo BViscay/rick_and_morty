@@ -7,6 +7,7 @@ import Detail from "./components/Detail/Detail";
 import Error from "./Views/Error/Error";
 import About from "./components/About/About";
 import Form from "./components/Form/Form";
+import Favorites from "./components/Favorites/Favorites";
 import useLogin from "./hooks/useLogin";
 import useCharacters from "./hooks/useCharacters";
 
@@ -30,6 +31,7 @@ function App() {
         />
         <Route path="/detail/:id" element={<Detail onClose={onClose} />} />
         <Route path="/about" element={<About />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </div>
   );

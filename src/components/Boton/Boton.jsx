@@ -1,5 +1,6 @@
+import React from "react";
 import styles from "./Boton.module.css";
-export default function Boton(props) {
-  const { text } = props;
-  return <button className={styles.Btn}>{text}</button>;
+
+export default function Boton({ children }) {
+  return <button className={styles.Btn}>{children}</button>;
 }

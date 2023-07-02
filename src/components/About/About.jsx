@@ -2,10 +2,7 @@ import styles from "./About.module.css";
 import React, { useEffect } from "react";
 import aboutBG from "../../img/AboutBG.png";
 import avatar from "../../img/Avatar.png";
-
 function About() {
-  // const location = useLocation();
-
   useEffect(() => {
     document.body.style.backgroundImage = `url(${aboutBG})`;
 
