@@ -27,7 +27,6 @@ export default function Nav(props) {
             </Boton>
           </Link>
         </span>
-
         <SearchBar onSearch={props.onSearch} />
       </nav>
     </header>

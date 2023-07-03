@@ -2,27 +2,28 @@ import styles from "./Card.module.css";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addFavs, removeFavs } from "../../redux/actions";
-import { useEffect, useState } from "react";
 
 export default function Card(props) {
   const { id, name, status, species, gender, origin, image } = props;
 
-  const [isFav, setIsFav] = useState(false);
   const myFavorites = useSelector((state) => state.myFavorites);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setIsFav(myFavorites.some((fav) => fav.id === props.id));
-  }, [myFavorites, props.id]);
+  const isFav = myFavorites.some((fav) => fav.id === id);
 
   const handleFavorite = () => {
     if (isFav) {
       dispatch(removeFavs(id));
-      setIsFav(false);
     } else {
       dispatch(addFavs(props));
-      setIsFav(true);
     }
+  };
+
+  const handleClose = () => {
+    if (isFav) {
+      dispatch(removeFavs(id));
+    }
+    props.onClose();
   };
 
   return (
@@ -51,7 +52,7 @@ export default function Card(props) {
               <h4 className={styles.cardProp}>Gender: {gender}</h4>
               <h4 className={styles.cardProp}>Status: {status}</h4>
             </div>
-            <button onClick={props.onClose} className={styles.button}>
+            <button onClick={handleClose} className={styles.button}>
               Close
             </button>
           </div>
