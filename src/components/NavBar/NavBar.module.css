@@ -3,12 +3,14 @@ header {
   /* background-color: rgba(58, 80, 61, 0.45); */
 }
 .navBar {
+  position: relative;
   max-width: 1300px;
   margin-inline: auto;
   height: 75px;
   display: flex;
   align-items: flex-start;
-  justify-content: end;
+  justify-content: flex-end;
+  z-index: 100;
 }
 .buttonsContainer {
   display: flex;

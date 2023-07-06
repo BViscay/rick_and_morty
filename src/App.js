@@ -19,7 +19,6 @@ function App() {
     <div className="App">
       <Nav onSearch={onSearch} />
       <Routes>
-        <Route path="*" element={<Error />} />
         <Route path="/" element={<Bienvenida />} />
         <Route
           path="/login"
@@ -32,6 +31,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail onClose={onClose} />} />
         <Route path="/about" element={<About />} />
         <Route path="/favorites" element={<Favorites />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );

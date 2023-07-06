@@ -12,6 +12,7 @@ export default function SearchBar(props) {
   const handleSearch = (event) => {
     event.preventDefault();
     props.onSearch(id);
+    setId("");
   };
 
   return (
