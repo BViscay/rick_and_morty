@@ -16,3 +16,10 @@
   margin-left: 15px;
   margin-right: auto;
 }
+
+.homeImg {
+  position: fixed;
+  height: 90px;
+  top: 5px;
+  left: 30px;
+}

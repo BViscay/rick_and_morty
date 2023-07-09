@@ -1,9 +1,11 @@
 import Card from "../Card/Card";
 import styles from "./Cards.module.css";
+import Home from "../../img/Home.png";
 export default function Cards(props) {
   const characters = props.characters;
   return (
     <div className={styles.divCont}>
+      <img className={styles.homeImg} src={Home} alt="Home" />
       <div className={styles.divCards}>
         {characters.map((character) => (
           <Card

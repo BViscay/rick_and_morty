@@ -16,3 +16,10 @@
   margin-left: 15px;
   margin-right: auto;
 }
+
+.FavImg {
+  position: fixed;
+  height: 80px;
+  top: 5px;
+  left: 30px;
+}

@@ -2,6 +2,7 @@ import styles from "./About.module.css";
 import React, { useEffect } from "react";
 import aboutBG from "../../img/AboutBG.png";
 import avatar from "../../img/Avatar.png";
+import aboutImg from "../../img/About.png";
 function About() {
   useEffect(() => {
     document.body.style.backgroundImage = `url(${aboutBG})`;
@@ -13,6 +14,7 @@ function About() {
 
   return (
     <div className={styles.container}>
+      <img className={styles.AboutImg} src={aboutImg} alt="About" />
       <h1 className={styles.title}>
         Welcome to our Rick and Morty-themed website!
       </h1>
@@ -40,7 +42,7 @@ function About() {
           </h2>
           <h3 className={styles.h3title}>Name: Bruno</h3>
           <div className={styles.character}>
-            <img className={styles.image} src={avatar} alt="" />
+            <img className={styles.image} src={avatar} alt="avatar" />
 
             <p className={styles.text}>
               Role: React Developer and SoyHenry Bootcamp Student Personality:

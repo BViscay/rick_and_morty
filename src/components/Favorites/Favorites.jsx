@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFavs } from "../../redux/actions";
 import { useEffect } from "react";
 import FavImg from "../../img/FavImg.jpg";
+import fav from "../../img/Favorites.png";
 
 function Favorites() {
   useEffect(() => {
@@ -23,6 +24,7 @@ function Favorites() {
 
   return (
     <div className={styles.divCont}>
+      <img className={styles.FavImg} src={fav} alt="Favorites" />
       <div className={styles.divCards}>
         {favorites.map((fav) => (
           <Card key={fav.id} onClose={() => handleClose(fav.id)} {...fav} />
