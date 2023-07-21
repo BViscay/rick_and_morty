@@ -34,15 +34,9 @@ export default function Card(props) {
         </div>
         <div className={styles.cardBack}>
           <div className={styles.cardContent}>
-            {isFav ? (
-              <button className={styles.heartButton} onClick={handleFavorite}>
-                ❤️
-              </button>
-            ) : (
-              <button className={styles.heartButton} onClick={handleFavorite}>
-                🤍
-              </button>
-            )}
+            <button className={styles.heartButton} onClick={handleFavorite}>
+              {isFav ? "❤️" : "🤍"}
+            </button>
             <Link to={`/detail/${id}`}>
               <h2 className={styles.cardName}>{name}</h2>
             </Link>

@@ -28,7 +28,10 @@ export const useSignupForm = (login) => {
     if (!Object.keys(errors).length > 0) {
       login(formData);
     }
-    setErrors({ ...errors, login: "Invalid email or password" });
+    setErrors({
+      ...errors,
+      login: "Invalid email or password pista: AAbb1234",
+    });
   };
 
   return {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const user = {
-  email: "brunoviscay@gmail.com",
+  email: "mail@gmail.com",
   password: "AAbb1234",
 };
 
