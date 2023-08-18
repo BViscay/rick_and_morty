@@ -1,41 +1,42 @@
 import styles from "./Detail.module.css";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import useCharacters from "../../hooks/useCharacters";
 
 export default function Detail(props) {
   const { id } = useParams();
+  const { detailCharacter, detailCharacters } = useCharacters();
+
   useEffect(() => {
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
-      ({ data }) => {
-        if (data.name) {
-          setCharacter(data);
-        } else {
-          window.alert("No hay personajes con ese ID");
-        }
-      }
-    );
-    return setCharacter({});
-  }, [id]);
-  const [character, setCharacter] = useState([]);
+    if (!detailCharacters.id) {
+      detailCharacter(id);
+    }
+  }, [id, detailCharacters.id, detailCharacter]);
 
   return (
     <div className={styles.container}>
-      {character.name && (
+      {detailCharacters.name && (
         <div className={`${styles.card} ${styles.centered}`}>
           <img
             className={styles.image}
-            src={character.image}
-            alt={character.name}
+            src={detailCharacters.image}
+            alt={detailCharacters.name}
           />
           <div className={styles.details}>
-            <h2 className={styles.name}>{character.name}</h2>
+            <h2 className={styles.name}>{detailCharacters.name}</h2>
             <div className={styles.properties}>
-              <p className={styles.property}>Status: {character.status}</p>
-              <p className={styles.property}>Species: {character.species}</p>
-              <p className={styles.property}>Gender: {character.gender}</p>
               <p className={styles.property}>
-                Origin: {character.origin && character.origin.name}
+                Status: {detailCharacters.status}
+              </p>
+              <p className={styles.property}>
+                Species: {detailCharacters.species}
+              </p>
+              <p className={styles.property}>
+                Gender: {detailCharacters.gender}
+              </p>
+              <p className={styles.property}>
+                Origin:{" "}
+                {detailCharacters.origin && detailCharacters.origin.name}
               </p>
             </div>
             <div>

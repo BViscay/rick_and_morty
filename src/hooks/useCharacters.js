@@ -3,6 +3,7 @@ import axios from "axios";
 
 const useCharacters = () => {
   const [characters, setCharacters] = useState([]);
+  const [detailCharacters, setDetailCharacters] = useState({});
 
   const onClose = (idParam) => {
     const filteredCharacters = characters.filter(
@@ -11,22 +12,52 @@ const useCharacters = () => {
     setCharacters(filteredCharacters);
   };
 
-  const onSearch = (id) => {
+  const onSearch = async (id) => {
     // eslint-disable-next-line
     if (!!characters.find((character) => character.id == id))
       return window.alert("Ese ID ya esta agregado");
-    axios(`https://rickandmortyapi.com/api/character/${id}`).then(
-      ({ data }) => {
-        if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
-        } else {
-          window.alert("¡No hay personajes con este ID!");
-        }
+    try {
+      const result = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+
+      if (result.data.name) {
+        setCharacters([...characters, result.data]);
+      } else {
+        window.alert("No existe un personaje con ese ID");
       }
-    );
+    } catch (error) {
+      console.log(error);
+      window.alert("No existe un personaje con ese ID ERROR");
+    }
   };
 
-  return { onSearch, onClose, characters };
+  const detailCharacter = async (id) => {
+    try {
+      const result = await axios(
+        `http://localhost:3001/rickandmorty/character/${id}`
+      );
+
+      if (result.data.name) {
+        // Mover esta línea antes de setDetailCharacters
+        setDetailCharacters(result.data);
+      } else {
+        window.alert("No hay personajes con ese ID");
+      }
+    } catch (error) {
+      console.log(error);
+      window.alert("No existe un personaje con ese ID ERROR");
+    }
+  };
+
+  return {
+    onSearch,
+    onClose,
+    detailCharacter,
+    characters,
+    detailCharacters,
+    setDetailCharacters,
+  };
 };
 
 export default useCharacters;

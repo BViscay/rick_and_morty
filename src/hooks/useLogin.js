@@ -1,20 +1,29 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const user = {
-  email: "mail@gmail.com",
-  password: "AAbb1234",
-};
-
-const useLogin = () => {
+const useLogin = (userData) => {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
 
   const login = (userData) => {
-    if (userData.password === user.password && userData.email === user.email) {
-      setIsLogin(true);
-      navigate("/home");
-    }
+    const { email, password } = userData;
+    const URL = "http://localhost:3001/rickandmorty/login/";
+
+    axios
+      .get(URL, {
+        params: {
+          email: email,
+          password: password,
+        },
+      })
+      .then(({ data }) => {
+        const { access } = data;
+        if (access) {
+          setIsLogin(true);
+          navigate("/home");
+        }
+      });
   };
 
   return { isLogin, login };

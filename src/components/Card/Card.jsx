@@ -1,4 +1,5 @@
 import styles from "./Card.module.css";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addFavs, removeFavs } from "../../redux/actions";
@@ -9,14 +10,11 @@ export default function Card(props) {
   const myFavorites = useSelector((state) => state.myFavorites);
   const dispatch = useDispatch();
 
-  const isFav = myFavorites.some((fav) => fav.id === id);
+  const [isFav, setIsFav] = useState(false);
 
   const handleFavorite = () => {
-    if (isFav) {
-      dispatch(removeFavs(id));
-    } else {
-      dispatch(addFavs(props));
-    }
+    dispatch(isFav ? removeFavs(id) : addFavs(props));
+    setIsFav(!isFav);
   };
 
   const handleClose = () => {
@@ -25,6 +23,13 @@ export default function Card(props) {
     }
     props.onClose();
   };
+
+  useEffect(() => {
+    if (myFavorites.find((character) => character.id === id)) {
+      setIsFav(true);
+    }
+    //eslint-disable-next-line
+  }, [myFavorites]);
 
   return (
     <div className={styles.card}>
