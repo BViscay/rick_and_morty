@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_URL_LOGIN } from "../Config/api";
 
 const useLogin = (userData) => {
   const [isLogin, setIsLogin] = useState(false);
@@ -8,7 +9,7 @@ const useLogin = (userData) => {
 
   const login = (userData) => {
     const { email, password } = userData;
-    const URL = "http://localhost:3001/rickandmorty/login/";
+    const URL = API_URL_LOGIN;
 
     axios
       .get(URL, {
