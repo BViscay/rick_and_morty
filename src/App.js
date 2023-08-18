@@ -12,12 +12,12 @@ import useLogin from "./hooks/useLogin";
 import useCharacters from "./hooks/useCharacters";
 
 function App() {
-  const { onSearch, onClose, characters } = useCharacters();
+  const { onSearch, onClose, characters, randomSearch } = useCharacters();
   const { isLogin, login } = useLogin();
 
   return (
     <div className="App">
-      <Nav onSearch={onSearch} />
+      <Nav onSearch={onSearch} randomSearch={randomSearch} />
       <Routes>
         <Route path="/" element={<Bienvenida />} />
         <Route

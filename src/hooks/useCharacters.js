@@ -21,9 +21,24 @@ const useCharacters = () => {
       const result = await axios(`${API_URL_CHARACTERS}${id}`);
 
       if (result.data.name) {
-        setCharacters([...characters, result.data]);
+        setCharacters((prevCharacters) => [...prevCharacters, result.data]);
       } else {
         window.alert("No existe un personaje con ese ID");
+      }
+    } catch (error) {
+      console.log(error);
+      window.alert("No existe un personaje con ese ID ERROR");
+    }
+  };
+
+  const randomSearch = async () => {
+    const randomId = Math.floor(Math.random() * 826) + 1;
+
+    try {
+      const result = await axios(`${API_URL_CHARACTERS}${randomId}`);
+
+      if (result.data.name) {
+        setCharacters((prevCharacters) => [...prevCharacters, result.data]);
       }
     } catch (error) {
       console.log(error);
@@ -47,8 +62,11 @@ const useCharacters = () => {
     }
   };
 
+  console.log(characters);
+
   return {
     onSearch,
+    randomSearch,
     onClose,
     detailCharacter,
     characters,
