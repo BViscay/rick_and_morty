@@ -21,17 +21,20 @@ export const useSignupForm = (login) => {
     setFormData({ ...formData, showPassword: !formData.showPassword });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const errors = validation(formData);
 
     if (!Object.keys(errors).length > 0) {
-      login(formData);
+      try {
+        await login(formData);
+      } catch (error) {
+        setErrors({
+          ...errors,
+          login: "Invalid email or password - Pista AAbb1234",
+        });
+      }
     }
-    setErrors({
-      ...errors,
-      login: "Invalid email or password pista: AAbb1234",
-    });
   };
 
   return {
