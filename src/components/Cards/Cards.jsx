@@ -1,24 +1,12 @@
 import Card from "../Card/Card";
 import styles from "./Cards.module.css";
 import Home from "../../img/Home.png";
-import { useState } from "react";
+import usePagination from "../../hooks/usePagination";
 
 export default function Cards(props) {
   const characters = props.characters;
-  const cardsInPage = 5;
-  const [actualPage, setActualPage] = useState(1);
-
-  const indexOfLastCard = actualPage * cardsInPage;
-  const indexOfFirstCard = indexOfLastCard - cardsInPage;
-  const currentCards = characters.slice(indexOfFirstCard, indexOfLastCard);
-
-  const nextPage = () => {
-    setActualPage(actualPage + 1);
-  };
-
-  const prevPage = () => {
-    setActualPage(actualPage - 1);
-  };
+  const { currentCards, nextPage, prevPage, hasPreviousPage, hasNextPage } =
+    usePagination(characters);
 
   return (
     <div className={styles.divCont}>
@@ -39,12 +27,12 @@ export default function Cards(props) {
         ))}
       </div>
       <div className={styles.divPagination}>
-        {actualPage > 1 && (
+        {hasPreviousPage && (
           <button onClick={prevPage} className={styles.button}>
             Previous
           </button>
         )}
-        {indexOfLastCard < characters.length && (
+        {hasNextPage && (
           <button onClick={nextPage} className={styles.button}>
             Next
           </button>
