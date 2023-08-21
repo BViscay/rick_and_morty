@@ -40,6 +40,27 @@ header {
   margin-top: 10px;
   margin-bottom: 30px;
   margin-right: 20px;
+  animation-name: flicker;
+  animation-duration: 3.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .buttonRandom::after {
   width: 70%;

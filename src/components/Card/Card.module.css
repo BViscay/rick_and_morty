@@ -4,8 +4,8 @@
 .card {
   position: relative;
   isolation: isolate;
-  width: 255px;
-  height: 375px;
+  width: 250px;
+  height: 370px;
   border-radius: 8px;
 }
 
