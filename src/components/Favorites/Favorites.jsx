@@ -5,6 +5,7 @@ import { removeFavs, filter, order } from "../../redux/actions";
 import { useEffect } from "react";
 import FavImg from "../../img/FavImg.jpg";
 import fav from "../../img/Favorites.png";
+import useFavsPagination from "../../hooks/useFavsPagination";
 
 function Favorites() {
   useEffect(() => {
@@ -28,6 +29,9 @@ function Favorites() {
   const handleClose = (id) => {
     dispatch(removeFavs(id));
   };
+
+  const { currentCards, nextPage, prevPage, hasPreviousPage, hasNextPage } =
+    useFavsPagination(favorites);
 
   return (
     <div className={styles.divCont}>
@@ -70,9 +74,21 @@ function Favorites() {
           </div>
         </div>
         <div className={styles.divCards}>
-          {favorites.map((fav) => (
+          {currentCards.map((fav) => (
             <Card key={fav.id} onClose={() => handleClose(fav.id)} {...fav} />
           ))}
+        </div>
+        <div className={styles.paginationButtons}>
+          {hasPreviousPage && (
+            <button onClick={prevPage} className={styles.paginationButton}>
+              Previous
+            </button>
+          )}
+          {hasNextPage && (
+            <button onClick={nextPage} className={styles.paginationButton}>
+              Next
+            </button>
+          )}
         </div>
       </div>
     </div>

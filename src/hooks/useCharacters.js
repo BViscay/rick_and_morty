@@ -14,8 +14,7 @@ const useCharacters = () => {
   };
 
   const onSearch = async (id) => {
-    // eslint-disable-next-line
-    if (!!characters.find((character) => character.id == id))
+    if (!!characters.find((character) => character.id === Number(id)))
       return window.alert("Ese ID ya esta agregado");
     try {
       const result = await axios(`${API_URL_CHARACTERS}${id}`);
@@ -23,7 +22,7 @@ const useCharacters = () => {
       if (result.data.name) {
         setCharacters((prevCharacters) => [...prevCharacters, result.data]);
       } else {
-        window.alert("No existe un personaje con ese ID");
+        window.alert("Ese ID ya esta agregado");
       }
     } catch (error) {
       console.log(error);
